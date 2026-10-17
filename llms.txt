@@ -1,0 +1,21 @@
+# Naya
+
+> Naya est un yaourt maison naturel, léger et facile à digérer, vendu au détail à Calavi et livré à Calavi et à Cotonou (Bénin). La commande se fait par WhatsApp.
+
+## Produits et prix
+- Bidon de 1,5 L : 2 500 FCFA
+- Bidon de 1 L : 2 000 FCFA
+- Sachet de 200 mL : 300 FCFA
+
+## Commander
+- WhatsApp : https://wa.me/2290152399315
+- Téléphone : 01 52 39 93 15
+- Facebook : https://www.facebook.com/profile.php?id=100073469870613
+- Le paiement, le lieu et l'heure de livraison se précisent directement avec le responsable sur WhatsApp. Les paiements Mobile Money sont acceptés.
+
+## Zone de livraison
+- Calavi
+- Cotonou
+
+## Pages
+- Site : https://kpvie.github.io/naya/

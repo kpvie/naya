@@ -1,0 +1,1002 @@
+/* =========================================================
+   NAYA | css/sections.css
+   Étape 3 sur 4 : toutes les sections, mobile d'abord
+   Points de rupture : 480 | 560 | 700 | 760 | 900 | 960 px
+   ========================================================= */
+
+/* ---------- 0. Réglages généraux ---------- */
+[hidden] {
+  display: none !important;
+}
+
+figure {
+  margin: 0;
+}
+
+/* Sur écran tactile, le survol ne doit pas rester collé après un appui */
+@media (hover: none) {
+  .bouton:hover:not(:focus-visible),
+  .quantite__bouton:hover:not(:focus-visible) {
+    background: var(--bleu);
+    color: var(--blanc);
+  }
+}
+
+/* ---------- 1. Hero ---------- */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: calc(100svh - var(--hauteur-entete));
+  min-height: max(560px, calc(100svh - var(--hauteur-entete)));
+  padding-block: clamp(4rem, 10vw, 8rem);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero__video {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero__voile {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(7, 31, 69, 0.82) 0%, rgba(7, 31, 69, 0.35) 70%),
+    linear-gradient(180deg, rgba(7, 31, 69, 0.35) 0%, rgba(7, 31, 69, 0.6) 100%);
+}
+
+.hero__contenu {
+  position: relative;
+  z-index: 2;
+}
+
+.hero__titre {
+  max-width: 15ch;
+}
+
+.hero__texte {
+  max-width: 34rem;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.75rem;
+  margin-top: 2rem;
+}
+
+.lien-fleche {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-bottom: 3px;
+  font-weight: 700;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 2px solid currentColor;
+}
+
+.lien-fleche::after {
+  content: "\2192";
+  display: inline-block;
+  transition: transform 0.3s var(--courbe);
+}
+
+.lien-fleche:hover::after,
+.lien-fleche:focus-visible::after {
+  transform: translateX(6px);
+}
+
+.hero__points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hero__points li {
+  position: relative;
+  padding-left: 1.1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.hero__points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 8px;
+  height: 8px;
+  background: var(--dore);
+  border-radius: 50%;
+}
+
+.hero__defilement {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-inline: auto;
+  color: var(--blanc);
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  animation: rebond 2.4s ease-in-out infinite;
+}
+
+@keyframes rebond {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+@media (min-width: 700px) and (min-height: 620px) {
+  .hero__defilement {
+    display: flex;
+  }
+}
+
+/* ---------- 2. Ruban défilant ---------- */
+.ruban {
+  overflow: hidden;
+  padding-block: 1rem;
+  background: var(--bleu);
+  color: var(--blanc);
+}
+
+.ruban__piste {
+  display: flex;
+  width: max-content;
+  animation: defilement 38s linear infinite;
+}
+
+.ruban__groupe {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.ruban__mot {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--police-titre);
+  font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+  font-style: italic;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--blanc);
+}
+
+.ruban__mot::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  margin-inline: clamp(1.25rem, 3vw, 2.25rem);
+  background: var(--dore);
+  border-radius: 50%;
+}
+
+@keyframes defilement {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ---------- 3. Disposition en deux colonnes ---------- */
+.duo {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+}
+
+.duo--photo-etroite > .cadre-image {
+  width: 100%;
+  max-width: 440px;
+  margin-inline: auto;
+}
+
+.duo__texte > :last-child {
+  margin-bottom: 0;
+}
+
+.entete-section {
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.entete-section .titre-section {
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 900px) {
+  .duo {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .duo--photo-etroite {
+    grid-template-columns: 5fr 7fr;
+  }
+
+  .duo--photo-etroite > .cadre-image {
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  .duo--inverse > .cadre-image {
+    order: 2;
+  }
+}
+
+/* ---------- 4. Produits et commande ---------- */
+.produits {
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .produits__photo {
+    position: sticky;
+    top: calc(var(--hauteur-entete) + 24px);
+  }
+}
+
+.produits__liste {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.produit {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--blanc);
+  border: 1.5px solid var(--trait);
+  border-radius: 16px;
+}
+
+.js .produit.revele {
+  transition:
+    opacity 0.8s var(--courbe),
+    transform 0.8s var(--courbe),
+    border-color 0.25s var(--courbe),
+    background-color 0.25s var(--courbe);
+}
+
+.produit:hover {
+  border-color: var(--bleu-clair);
+}
+
+.produit[data-actif="true"] {
+  border-color: var(--bleu);
+  background: var(--creme);
+}
+
+.produit__format {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  background: var(--ciel);
+  border-radius: 14px;
+}
+
+.produit__volume {
+  font-family: var(--police-titre);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--marine);
+}
+
+.produit__type {
+  margin-top: 2px;
+  font-size: 0.675rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gris);
+}
+
+.produit__nom {
+  margin: 0 0 0.15rem;
+  font-size: 1.1rem;
+}
+
+.produit__prix {
+  margin: 0;
+  font-weight: 800;
+  white-space: nowrap;
+  color: var(--bleu);
+}
+
+.quantite {
+  grid-column: 1 / -1;
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 4px;
+  border: 1.5px solid var(--trait);
+  border-radius: 999px;
+}
+
+.quantite__bouton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  font-size: 1.35rem;
+  line-height: 1;
+  color: var(--blanc);
+  background: var(--bleu);
+  border: 2px solid var(--bleu);
+  border-radius: 50%;
+  box-shadow: none;
+  transition:
+    background-color 0.25s var(--courbe),
+    color 0.25s var(--courbe);
+}
+
+.quantite__bouton:hover,
+.quantite__bouton:focus-visible {
+  color: var(--noir);
+  background: var(--blanc);
+}
+
+.quantite__valeur {
+  min-width: 2.25rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  text-align: center;
+  color: var(--encre);
+}
+
+@media (min-width: 480px) {
+  .produit {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .quantite {
+    grid-column: auto;
+    justify-self: auto;
+  }
+}
+
+/* Récapitulatif */
+.recapitulatif {
+  margin-top: 1.5rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background: var(--blanc);
+  border: 1.5px solid var(--trait);
+  border-radius: var(--rayon);
+  box-shadow: var(--ombre-douce);
+}
+
+.recapitulatif__titre {
+  margin-bottom: 1rem;
+}
+
+.recapitulatif__vide {
+  margin: 0 0 1rem;
+  color: var(--gris);
+}
+
+.recapitulatif__liste {
+  margin: 0 0 0.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.recapitulatif__liste:empty {
+  display: none;
+}
+
+.recapitulatif__liste li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--trait);
+}
+
+.ligne__nom {
+  font-weight: 600;
+}
+
+.ligne__prix {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.recapitulatif__total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 0 1.5rem;
+  padding-top: 0.75rem;
+  font-weight: 600;
+}
+
+.recapitulatif__total strong {
+  font-family: var(--police-titre);
+  font-size: 1.6rem;
+  color: var(--marine);
+}
+
+/* Formulaire */
+.formulaire__champ {
+  margin-bottom: 1rem;
+}
+
+.formulaire__champ label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.formulaire__option {
+  font-weight: 500;
+  color: var(--gris);
+}
+
+.formulaire input,
+.formulaire select {
+  width: 100%;
+  min-height: 50px;
+  padding: 0 1rem;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--encre);
+  background: var(--blanc);
+  border: 1.5px solid var(--trait);
+  border-radius: 12px;
+  transition: border-color 0.25s var(--courbe);
+}
+
+.formulaire input::placeholder {
+  color: var(--gris);
+  opacity: 0.8;
+}
+
+.formulaire input:hover,
+.formulaire select:hover,
+.formulaire input:focus,
+.formulaire select:focus {
+  border-color: var(--bleu);
+}
+
+.formulaire select {
+  padding-right: 2.75rem;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231B6FD1' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  background-size: 20px;
+}
+
+.formulaire__ligne {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+@media (min-width: 560px) {
+  .formulaire__ligne {
+    grid-template-columns: 1fr 1.4fr;
+    gap: 1rem;
+  }
+}
+
+.formulaire__erreur {
+  margin: 0.35rem 0 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #B3261E;
+}
+
+.formulaire__champ[data-invalide="true"] input {
+  border-color: #B3261E;
+}
+
+.formulaire__note {
+  margin: 0.9rem 0 0;
+  font-size: 0.875rem;
+  text-align: center;
+  color: var(--gris);
+}
+
+/* ---------- 5. Bandeau fait maison ---------- */
+.bandeau {
+  display: block;
+}
+
+.bandeau__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 75% 50%;
+}
+
+.bandeau__voile {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(7, 31, 69, 0.88) 0%,
+    rgba(7, 31, 69, 0.55) 45%,
+    rgba(7, 31, 69, 0) 75%
+  );
+}
+
+.bandeau__texte {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 34rem;
+  padding: clamp(1.5rem, 5vw, 4rem);
+}
+
+.bandeau__texte h2,
+.bandeau__texte p,
+.bandeau__texte .surtitre {
+  color: var(--blanc);
+}
+
+.bandeau__texte h2 {
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+}
+
+.bandeau__texte p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 699px) {
+  .bandeau.cadre-image {
+    aspect-ratio: 4 / 5;
+  }
+
+  .bandeau__voile {
+    background: linear-gradient(
+      0deg,
+      rgba(7, 31, 69, 0.92) 0%,
+      rgba(7, 31, 69, 0.62) 50%,
+      rgba(7, 31, 69, 0) 85%
+    );
+  }
+
+  .bandeau__texte {
+    justify-content: flex-end;
+  }
+}
+
+/* ---------- 6. Moments ---------- */
+.moment {
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.moment:last-child {
+  margin-bottom: 0;
+}
+
+.moment h3 {
+  font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+}
+
+.moment p {
+  max-width: 34ch;
+  margin: 0;
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  color: var(--gris);
+}
+
+/* ---------- 7. Étapes ---------- */
+.etapes {
+  display: grid;
+  gap: 1.25rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.etape {
+  position: relative;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+.etape:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: 27px;
+  top: 64px;
+  bottom: -0.9rem;
+  width: 2px;
+  background: var(--trait);
+}
+
+.etape__numero {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  font-family: var(--police-titre);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--blanc);
+  background: var(--bleu);
+  border-radius: 50%;
+}
+
+.etape__titre {
+  margin: 0.4rem 0 0.2rem;
+  font-size: 1.25rem;
+}
+
+.etape p {
+  margin: 0;
+  color: var(--gris);
+}
+
+/* ---------- 8. Livraison ---------- */
+.zones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.5rem 0 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.zones__element {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1.25rem;
+  font-weight: 700;
+  color: var(--marine);
+  border: 1.5px solid var(--bleu);
+  border-radius: 999px;
+}
+
+.zones__element::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: var(--bleu);
+  border-radius: 50%;
+}
+
+/* ---------- 9. Appel final ---------- */
+.appel {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(76, 154, 235, 0.28), transparent 46%),
+    var(--marine);
+}
+
+.appel .titre-section {
+  max-width: 12ch;
+}
+
+/* ---------- 10. FAQ ---------- */
+.faq {
+  max-width: 860px;
+}
+
+.faq__liste {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.faq__element {
+  background: var(--blanc);
+  border: 1.5px solid var(--trait);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.js .faq__element.revele {
+  transition:
+    opacity 0.8s var(--courbe),
+    transform 0.8s var(--courbe),
+    border-color 0.25s var(--courbe);
+}
+
+.faq__element:hover,
+.faq__element[open] {
+  border-color: var(--bleu);
+}
+
+.faq__question {
+  position: relative;
+  display: block;
+  padding: 1.2rem 3.5rem 1.2rem 1.5rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--marine);
+  list-style: none;
+  cursor: pointer;
+}
+
+.faq__question::-webkit-details-marker {
+  display: none;
+}
+
+.faq__question::after {
+  content: "+";
+  position: absolute;
+  right: 1.25rem;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin-top: -14px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--bleu);
+  transition: transform 0.35s var(--courbe);
+}
+
+.faq__element[open] .faq__question::after {
+  transform: rotate(45deg);
+}
+
+.faq__reponse {
+  padding: 0 1.5rem 1.3rem;
+}
+
+.faq__reponse p {
+  margin: 0;
+  color: var(--gris);
+}
+
+.faq__element[open] .faq__reponse {
+  animation: ouverture 0.4s var(--courbe);
+}
+
+@keyframes ouverture {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: none; }
+}
+
+.faq__action {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+/* ---------- 11. Pied de page ---------- */
+.pied {
+  padding-top: clamp(3rem, 6vw, 5rem);
+  padding-bottom: 5.5rem;
+}
+
+.pied__grille {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+.pied__marque img {
+  width: auto;
+  height: 48px;
+}
+
+.pied__marque p {
+  max-width: 32ch;
+  margin: 1rem 0 0;
+}
+
+.pied__titre {
+  margin: 0 0 1rem;
+  font-family: var(--police-texte);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.pied__liste {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pied__liste a {
+  text-decoration: none;
+  text-underline-offset: 4px;
+}
+
+.pied__liste a:hover,
+.pied__liste a:focus-visible {
+  text-decoration: underline;
+}
+
+.pied__bas {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 0.875rem;
+}
+
+.pied__bas p {
+  margin: 0;
+}
+
+@media (min-width: 760px) {
+  .pied {
+    padding-bottom: 1.5rem;
+  }
+
+  .pied__grille {
+    grid-template-columns: 1.4fr 1fr 1.2fr;
+    gap: 3rem;
+  }
+}
+
+/* ---------- 12. Barre de commande mobile ---------- */
+.barre-panier {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: calc(12px + env(safe-area-inset-bottom));
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.65rem 0.65rem 0.65rem 1.4rem;
+  color: var(--blanc);
+  background: var(--marine);
+  border-radius: 999px;
+  animation: entrer-bas 0.45s var(--courbe);
+}
+
+.barre-panier__infos {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.barre-panier__quantite {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--blanc);
+}
+
+.barre-panier__total {
+  font-size: 1.05rem;
+  color: var(--blanc);
+}
+
+@keyframes entrer-bas {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (min-width: 960px) {
+  .barre-panier {
+    display: none;
+  }
+}
+
+/* ---------- 13. Bouton WhatsApp flottant ---------- */
+.whatsapp-flottant {
+  position: fixed;
+  right: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  z-index: 85;
+  width: 52px;
+  padding: 0;
+}
+
+.whatsapp-flottant::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border: 2px solid var(--bleu);
+  border-radius: 999px;
+  opacity: 0;
+  pointer-events: none;
+  animation: pulsation 3.2s ease-out infinite;
+}
+
+.whatsapp-flottant__texte {
+  display: none;
+}
+
+.barre-panier:not([hidden]) ~ .whatsapp-flottant {
+  bottom: calc(88px + env(safe-area-inset-bottom));
+}
+
+@keyframes pulsation {
+  0% { opacity: 0.55; transform: scale(1); }
+  70%, 100% { opacity: 0; transform: scale(1.35); }
+}
+
+@media (min-width: 640px) {
+  .whatsapp-flottant {
+    width: auto;
+    padding: 0 1.25rem;
+  }
+
+  .whatsapp-flottant__texte {
+    display: inline;
+  }
+}
+
+@media (min-width: 960px) {
+  .barre-panier:not([hidden]) ~ .whatsapp-flottant {
+    bottom: calc(16px + env(safe-area-inset-bottom));
+  }
+}
+
+/* ---------- 14. Très petits écrans ---------- */
+@media (max-width: 420px) {
+  .bouton-panier {
+    padding: 0 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  .entete__interieur {
+    gap: 0.75rem;
+  }
+
+  .entete__actions {
+    gap: 0.5rem;
+  }
+
+  .hero__actions .bouton {
+    width: 100%;
+  }
+
+  .produit {
+    padding: 0.9rem 1rem;
+  }
+
+  .produit__format {
+    width: 64px;
+    height: 64px;
+  }
+}
+/* ---------- Ajustements pour l'en-tête flottant ---------- */
+.hero {
+  min-height: max(640px, 100svh);
+  padding-top: calc(var(--hauteur-entete) + clamp(1.5rem, 5vw, 4rem));
+}
+
+/* Sécurité : espace entre les zones de livraison et le bouton */
+.duo__texte .zones {
+  margin: 1.5rem 0 2rem;
+}

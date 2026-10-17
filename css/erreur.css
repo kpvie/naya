@@ -1,0 +1,50 @@
+/* NAYA | css/erreur.css | styles de la page 404 uniquement */
+.erreur {
+  display: flex;
+  align-items: center;
+  min-height: 100svh;
+  padding-block: 4rem;
+  text-align: center;
+}
+
+.erreur__contenu {
+  max-width: 34rem;
+  margin-inline: auto;
+}
+
+.erreur__logo {
+  display: inline-block;
+}
+
+.erreur__logo img {
+  width: auto;
+  height: 48px;
+  margin-inline: auto;
+}
+
+.erreur__code {
+  margin: 1.5rem 0 0;
+  font-family: var(--police-titre);
+  font-size: clamp(5rem, 22vw, 10rem);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.erreur__titre {
+  margin-top: 0.5rem;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+}
+
+.erreur__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem 1.75rem;
+  margin-top: 2rem;
+}
+
+.erreur__lien {
+  font-weight: 700;
+  text-underline-offset: 4px;
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://kpvie.github.io/naya/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://kpvie.github.io/naya/images/produits-famille-1200.webp</image:loc>
+      <image:caption>Yaourt maison naturel Naya, bidon de 1 L et sachet de 200 mL</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://kpvie.github.io/naya/images/fait-maison-1200.webp</image:loc>
+      <image:caption>Fruits frais et yaourt Naya sur une table en bois</image:caption>
+    </image:image>
+  </url>
+</urlset>
+site.webmanifest
+json
+{
+  "name": "Naya, yaourt maison naturel",
+  "short_name": "Naya",
+  "description": "Yaourt maison naturel, livré à Calavi et Cotonou. Commande par WhatsApp.",
+  "lang": "fr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FBF8F2",
+  "theme_color": "#0B2A5B",
+  "icons": [
+    { "src": "images/icone-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "images/icone-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

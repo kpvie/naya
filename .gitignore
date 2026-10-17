@@ -1,0 +1,25 @@
+# Originaux et outils : ne jamais publier
+sources/
+outils/
+node_modules/
+package.json
+package-lock.json
+
+# Secrets et fichiers personnels
+.env
+.env.*
+*.key
+*.pem
+
+# Archives et sauvegardes
+*.zip
+*.rar
+*.bak
+*.psd
+
+# Déchets du système et de l'éditeur
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
