@@ -21,7 +21,7 @@ json
 {
   "name": "Naya, yaourt maison naturel",
   "short_name": "Naya",
-  "description": "Yaourt maison naturel, livré à Calavi et Cotonou. Commande par WhatsApp.",
+  "description": "Yaourt maison naturel, livré à Fidjrossè, à Cotonou et à Calavi.",
   "lang": "fr",
   "start_url": "./",
   "scope": "./",

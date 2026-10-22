@@ -1,6 +1,6 @@
 /* =========================================================
-   NAYA | css/sections.css
-   Étape 3 sur 4 : toutes les sections, mobile d'abord
+   NAYA | sections.css
+   toutes les sections, mobile d'abord
    Points de rupture : 480 | 560 | 700 | 760 | 900 | 960 px
    ========================================================= */
 
@@ -13,7 +13,7 @@ figure {
   margin: 0;
 }
 
-/* Sur écran tactile, le survol ne doit pas rester collé après un appui */
+/* Sur écran tactile, le survol ne pas rester collé après un appui */
 @media (hover: none) {
   .bouton:hover:not(:focus-visible),
   .quantite__bouton:hover:not(:focus-visible) {
