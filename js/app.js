@@ -1,9 +1,9 @@
 /* =========================================================
-   NAYA | js/app.js
-   Étape 4 sur 4 : panier, message WhatsApp, menu, animations, FAQ
+   NAYA | app.js
+  .... panier, message WhatsApp, menu, animations, FAQ
    Sécurité : aucun innerHTML, aucun gestionnaire en ligne,
    prix lus dans un catalogue figé dans ce fichier (jamais dans la page),
-   tout texte saisi est nettoyé avant d'entrer dans le message.
+   tout texte saisi est nettoyé avant d'entrer dans le message....
    ========================================================= */
 (function () {
   "use strict";
